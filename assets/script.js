@@ -1,6 +1,4 @@
-// ========================================
-// MOBILE MENU TOGGLE
-// ========================================
+//hamburger
 
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -11,7 +9,6 @@ if (hamburger && navMenu) {
         hamburger.classList.toggle('active');
     });
 
-    // Close menu when link is clicked
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
@@ -19,7 +16,6 @@ if (hamburger && navMenu) {
         });
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.navbar')) {
             navMenu.classList.remove('active');
@@ -28,11 +24,7 @@ if (hamburger && navMenu) {
     });
 }
 
-
-
-// ========================================
-// FAQ ACCORDION
-// ========================================
+// Faq accordion
 
 const faqQuestions = document.querySelectorAll('.faq-question');
 
@@ -41,21 +33,17 @@ faqQuestions.forEach(question => {
         const faqItem = question.parentElement;
         const isActive = faqItem.classList.contains('active');
 
-        // Close all FAQ items
         document.querySelectorAll('.faq-item').forEach(item => {
             item.classList.remove('active');
         });
 
-        // Open clicked item if it wasn't active
         if (!isActive) {
             faqItem.classList.add('active');
         }
     });
 });
 
-// ========================================
-// FORM VALIDATION & SUBMISSION
-// ========================================
+// Form validation and submission
 
 const contactForm = document.getElementById('contactForm');
 
@@ -68,27 +56,22 @@ if (contactForm) {
         const subject = document.getElementById('subject').value.trim();
         const message = document.getElementById('message').value.trim();
 
-        // Basic validation
         if (!name || !email || !subject || !message) {
             showNotification('Mohon lengkapi semua field yang diperlukan', 'error');
             return;
         }
 
-        // Email validation
         if (!isValidEmail(email)) {
             showNotification('Format email tidak valid', 'error');
             return;
         }
 
-        // Simulate form submission
         showNotification('Terima kasih! Pesan Anda telah berhasil dikirim. Kami akan segera menghubungi Anda.', 'success');
         contactForm.reset();
     });
 }
 
-// ========================================
-// UTILITY FUNCTIONS
-// ========================================
+// Utility functions
 
 function isValidEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -96,11 +79,9 @@ function isValidEmail(email) {
 }
 
 function showNotification(message, type = 'success') {
-    // Remove existing notifications
     const existingNotifications = document.querySelectorAll('.notification');
     existingNotifications.forEach(notification => notification.remove());
 
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.innerHTML = `
@@ -108,7 +89,6 @@ function showNotification(message, type = 'success') {
         <span>${message}</span>
     `;
 
-    // Add styles
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -129,7 +109,6 @@ function showNotification(message, type = 'success') {
 
     document.body.appendChild(notification);
 
-    // Add animation keyframes
     if (!document.getElementById('notification-styles')) {
         const style = document.createElement('style');
         style.id = 'notification-styles';
@@ -148,16 +127,13 @@ function showNotification(message, type = 'success') {
         document.head.appendChild(style);
     }
 
-    // Remove notification after 5 seconds
     setTimeout(() => {
         notification.style.animation = 'slideInRight 0.3s ease reverse';
         setTimeout(() => notification.remove(), 300);
     }, 5000);
 }
 
-// ========================================
-// SMOOTH SCROLLING
-// ========================================
+// Smooth scrolling 
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -172,9 +148,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ========================================
-// LAZY LOADING ANIMATIONS
-// ========================================
+// Lazy loading and fade-in animations
 
 const observerOptions = {
     threshold: 0.1,
@@ -190,7 +164,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for fade-in animation
 document.querySelectorAll('.program-card, .leader-card, .stat-card, .member-item, .info-card').forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
@@ -198,9 +171,7 @@ document.querySelectorAll('.program-card, .leader-card, .stat-card, .member-item
     observer.observe(card);
 });
 
-// ========================================
-// STATS COUNTER ANIMATION
-// ========================================
+// Stats counter animation
 
 function animateCounter(element, target, duration = 2000) {
     const start = 0;
@@ -218,7 +189,6 @@ function animateCounter(element, target, duration = 2000) {
     }, 16);
 }
 
-// Animate stats when they come into view
 const statCards = document.querySelectorAll('.stat-card h3');
 let statsAnimated = false;
 
@@ -240,9 +210,7 @@ if (statCards.length > 0) {
     statsObserver.observe(statCards[0].closest('.stats-overview') || statCards[0]);
 }
 
-// ========================================
-// ACTIVE NAV LINK ON SCROLL
-// ========================================
+// Active nav link on scroll
 
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section[id]');
