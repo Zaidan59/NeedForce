@@ -11,7 +11,7 @@
 - 🏠 **Halaman Home** - Overview komunitas dan statistik
 - 👥 **Halaman Tim** - Profil lengkap anggota tim NeedForce
 - 📞 **Halaman Kontak** - Form kontak dan informasi media sosial
-- 📊 **Program** - Informasi program dan layanan yang ditawarkan
+- 📊 **Program** - Informasi program
 - 📱 **Responsive Design** - Tampilan optimal di semua perangkat
 - 🎨 **Modern UI/UX** - Antarmuka yang menarik dan user-friendly
 
