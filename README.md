@@ -1,6 +1,6 @@
 # NeedForce
 
-![NeedForce Logo](assets/logo.png)
+<img src="assets/logo.png" alt="NeedForce Logo" width="150">
 
 ## 📖 Deskripsi
 
